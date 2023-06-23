@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"
+    >
+</head>
+<body>
+
+<!--Логаут и чёрная полоска-->
+<div class="alert bg-dark text-white" role="alert">
+    <strong>
+        <td th:text="${user.email}"></td>
+    </strong>
+    <th> with roles:</th>
+    <th th:each="role : ${user.roles}" th:text="${role.value}" style="list-style-type: none"></th>
+    <th th:insert="~{Logout::header}"></th>
+
+    <!--Кнопка User-->
+</div>
+<div style="position:fixed; top:103px;">
+    <button type="button" class="btn btn-primary text-left" style="width: 210px">User</button>
+</div>
+
+<!--Кнопка Admin-->
+<div style="position:fixed; top:63px;">
+    <form th:action="@{/admin}" method="get">
+        <button type="submit" class="btn btn-primary text-left" style="width: 210px">Admin</button>
+    </form>
+</div>
+
+<!--    Лейблы-->
+<div class="alert alert-secondary" role="alert"
+     style="position: fixed;
+     left: 210px;
+     top: 50px;
+     width: 2000px;
+     height: 2000px;
+     background-color: #F8F9FA">
+</div>
+<div class="alert alert-secondary" role="alert"
+     style="position: fixed;
+     left: 240px;
+     top: 122px;
+     width: 1000px;
+     height: 50px;
+     background-color: #F7F7F7">
+    <p class="h5"> About user</p>
+</div>
+<div class="alert alert-secondary" role="alert"
+     style="position: fixed;
+     left: 240px;
+     top: 170px;
+     width: 1000px;
+     height: 150px;
+     background-color: #FFFFFF">
+</div>
+
+<div style="position: fixed;left: 240px;top: 60px">
+    <p class="h1"> User information-page</p>
+</div>
+
+<!--Таблица-->
+<div style="position: fixed;
+    left: 260px;
+    top: 190px;
+    width: 960px;
+    height: 40px;">
+    <table class="table table-striped">
+        <thead>
+        <tr class="text-center">
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+                <ul>
+                    <li th:each="role : ${user.roles}" th:text="${role.value}" style="list-style-type: none"></li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
