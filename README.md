@@ -1,2 +1,2 @@
-# Task3_1_4_Spring_Bootstrap
- this repo create to show Bootstrap app
+# Task3_1_2_SpringBoot
+ this repo create in education purpose
